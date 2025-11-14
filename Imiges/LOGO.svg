@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1962.11 210.26">
-  <!-- Generator: Adobe Illustrator 29.8.2, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1186.03 448">
+  <!-- Generator: Adobe Illustrator 29.8.3, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
   <defs>
     <style>
-      .st0, .st1 {
-        fill: #fff;
+      .st0 {
+        letter-spacing: -.03em;
       }
 
       .st1 {
-        font-family: Noka-Medium, Noka;
-        font-size: 241.62px;
-        font-weight: 500;
+        fill: lime;
+      }
+
+      .st2 {
         letter-spacing: -.02em;
+      }
+
+      .st3 {
+        fill: #fff;
+        font-family: Noka-Medium, Noka;
+        font-size: 274.88px;
+        font-weight: 500;
       }
     </style>
   </defs>
-  <text class="st1" transform="translate(13.25 193.63) scale(1.01 1)"><tspan x="0" y="0">BALANCEHEART</tspan></text>
+  <text class="st3" transform="translate(-22.21 210) scale(1.01 1)"><tspan class="st2"><tspan x="0" y="0">BALANCE</tspan></tspan><tspan class="st0"><tspan x="0" y="238">HEART</tspan></tspan></text>
   <g>
-    <path class="st0" d="M1837.17,123.68v61c0,6.94,5.63,12.57,12.57,12.57h.23c6.94,0,12.57-5.63,12.57-12.57v-52c0-6.17,4.47-11.42,10.56-12.41l29.3-4.13c8.54-1.38,16.59,6.22,14.39,14.59-1.88,7.13-7.86,20.7-9.84,27.81-2.09,7.53,4.57,14.75,12.38,14.75h0c6.03,0,10.23-4.32,12.35-10.21,0,0,9.07-25.05,11.32-33.63,5.84-22.25-14.88-42.73-37.66-39.51l-43.83,5.72c-13.96,1.97-24.34,13.92-24.34,28.02Z"/>
-    <path class="st0" d="M1837.26,77.05h0c-.8-6.61,3.88-12.62,10.48-13.46l34.24-4.38c6.6-.84,11.28-6.85,10.48-13.46l-2.78-23.05c-.8-6.64,3.93-12.67,10.57-13.47l.93-.11c6.64-.8,12.67,3.93,13.47,10.57l3.76,31.19c1.88,15.56-9.22,29.7-24.78,31.57l-42.93,5.16c-6.64.8-12.66-3.93-13.47-10.57Z"/>
-    <rect class="st0" x="1834.72" y="16.97" width="34.37" height="34.37" rx="13.62" ry="13.62" transform="translate(3691.98 -177.62) rotate(172.38)"/>
+    <path class="st1" d="M1005.74,334.01l-97.87.03v-21.78l92.79-.03v-70.38h21.88v75.36c-6.56,6.56-10.24,10.24-16.8,16.8Z"/>
+    <path class="st1" d="M926.85,448h-18.99v-93.06h133.63c14.25,14.25,22.22,22.22,36.47,36.47v56.6h-18.99v-42.08l-29.17-29.17h-102.91v71.25h-.03Z"/>
+    <rect class="st1" x="907.86" y="241.85" width="49" height="49" transform="translate(1864.72 532.69) rotate(-180)"/>
   </g>
 </svg>

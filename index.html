@@ -8,29 +8,36 @@
   <link rel="stylesheet" href="https://use.typekit.net/wak8lgu.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
+ 
 </head>
 <body> 
+ 
+  
   <div class="grid-wrapper">
     <div class="grid-container">
     
-    <div class="logo-cell"></div>
+    <div class="logo-cell"></div>  
     <div class="item_hvezda-cell"></div>
-    <div class="item_hvezda2-cell"></div>
-    <div class="item_sipka_dole-cell"></div>
+    
+    
     <div class="item_sipka_dole2-cell"></div>
-    <div class="img_pohyb-cell"></div>
+   
     <div class="text1">HeartBalance spojuje pohyb a zodpovědnost. Naše podložky vznikají v chráněné dílně na Valašsku a dávají práci lidem s handicapem.</div>
+    <div class="text2">Produkty</div>
+     <div class="text3">BALANCECORE</div>
+    <div class="text4">BALANCEFIT</div>
+    
+    
    
    
     <model-viewer
     src="Imiges/Podlozka.glb"
     alt="3D model"
-    id="viewer"
+    id="viewer1"
     class="model"
-    auto-rotate 
+    
     camera-orbit="0deg 90deg 90deg"
-    exposure="2"
+    exposure="1"
     
     shadow-intensity="5"
     environment-rotation="0deg 120deg 0deg"
@@ -42,18 +49,18 @@
     </model-viewer>
 
       <model-viewer
-      src="Imiges/podlozkaanim.glb"
+      src="Imiges/Podlozka.glb"
       alt="3D model"
-      id="viewer"
+      id="viewer2"
       class="model2"
-      auto-rotate 
+      
       camera-orbit="0deg 90deg 90deg"
-      exposure="2"
+      exposure="1"
     
       shadow-intensity="5"
       environment-rotation="0deg 120deg 0deg"
       disable-zoom
-      rotation-per-second="-30deg"
+      
       >
       </model-viewer>
 
@@ -67,8 +74,23 @@
 </div>
   
   <script>
+const viewer1 = document.querySelector('#viewer1');
+const viewer2 = document.querySelector('#viewer2');
 
-  </script>
+viewer1.autoRotate = false;
+viewer2.autoRotate = false;
+
+window.addEventListener('scroll', () => {
+  const scrollFraction = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  const xRotation = scrollFraction * 280;
+
+  viewer1.cameraOrbit = `${xRotation}deg 90deg 90deg`;
+  viewer2.cameraOrbit = `${-xRotation}deg 90deg 90deg`;
+
+  viewer1.jumpCameraToGoal();
+  viewer2.jumpCameraToGoal();
+});
+</script>
 
 
   <script>
@@ -93,7 +115,7 @@
 
     // Determine columns from CSS (responsive). Fallback to 12/12 layout.
     const cols = window.matchMedia('(max-width: 600px)').matches ? 6 : 12;
-    const rows = 12;
+    const rows = 50;
     const totalCells2 = cols * rows;
 
     // Clear any existing cell2 children (avoid duplicates on hot-reload)
@@ -124,6 +146,13 @@
       // clear previous
       while (svg.firstChild) svg.removeChild(svg.firstChild);
 
+      // set SVG to full page scrollable height so dots cover entire page
+      const wrapper = document.querySelector('.grid-wrapper');
+      if (wrapper) {
+        const fullHeight = wrapper.scrollHeight;
+        svg.setAttribute('height', String(fullHeight));
+      }
+
       // bounding rects to compute positions
       const gridRect = container2.getBoundingClientRect();
       const svgRect = svg.getBoundingClientRect();
@@ -131,13 +160,17 @@
       const cellW = gridRect.width / cols;
       const cellH = gridRect.height / rows;
 
+      // calculate how many rows fit in the full SVG height (entire page including scroll)
+      const svgHeight = parseFloat(svg.getAttribute('height')) || gridRect.height;
+      const dynamicRows = Math.ceil(svgHeight / cellH) + 1; // +1 for safety margin
+
       // place circles at internal intersections (where 4 cells meet)
-      // that is rows-1 by cols-1 points (skip outer border if desired)
-      const radius = 5; // mini size in pixels
-      for (let r = 1; r < rows; r++) {
+      // that is dynamicRows-1 by cols-1 points (skip outer border if desired)
+      const radius = 0; // mini size in pixels
+      for (let r = 1; r < dynamicRows; r++) {
         for (let c = 1; c < cols; c++) {
           const cx = gridRect.left + c * cellW - svgRect.left;
-          const cy = gridRect.top + r * cellH - svgRect.top;
+          const cy = r * cellH;
           const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
           circle.setAttribute('cx', String(cx));
           circle.setAttribute('cy', String(cy));
