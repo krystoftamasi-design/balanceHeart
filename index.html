@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeathBalance</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/wak8lgu.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+</head>
+<body> 
+  <div class="grid-wrapper">
+    <div class="grid-container">
+    
+    <div class="logo-cell"></div>
+    <div class="item_hvezda-cell"></div>
+    <div class="item_hvezda2-cell"></div>
+    <div class="item_sipka_dole-cell"></div>
+    <div class="item_sipka_dole2-cell"></div>
+    <div class="img_pohyb-cell"></div>
+    <div class="text1">HeartBalance spojuje pohyb a zodpovědnost. Naše podložky vznikají v chráněné dílně na Valašsku a dávají práci lidem s handicapem.</div>
+   
+   
+    <model-viewer
+    src="Imiges/Podlozka.glb"
+    alt="3D model"
+    id="viewer"
+    class="model"
+    auto-rotate 
+    camera-orbit="0deg 90deg 90deg"
+    exposure="2"
+    
+    shadow-intensity="5"
+    environment-rotation="0deg 120deg 0deg"
+    disable-zoom
+    rotation-per-second="30deg"
+    
+
+      >
+    </model-viewer>
+
+      <model-viewer
+      src="Imiges/podlozkaanim.glb"
+      alt="3D model"
+      id="viewer"
+      class="model2"
+      auto-rotate 
+      camera-orbit="0deg 90deg 90deg"
+      exposure="2"
+    
+      shadow-intensity="5"
+      environment-rotation="0deg 120deg 0deg"
+      disable-zoom
+      rotation-per-second="-30deg"
+      >
+      </model-viewer>
+
+    </div>      
+
+  <div class="grid-container2"></div>
+
+      <svg class="grid-overlay" width="100%" height="100%">
+      <!-- body se budou generovat JS -->
+      </svg>
+</div>
+  
+  <script>
+
+  </script>
+
+
+  <script>
+    const container = document.querySelector('.grid-container');
+
+    const totalCells = 200; // celkový počet buněk 
+    const existingCells = container.querySelectorAll('.cell').length;
+
+    const emptyCellsToAdd = totalCells - existingCells;
+
+    for (let i = 0; i < emptyCellsToAdd; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.classList.add('cell', 'empty');
+      container.appendChild(emptyCell);
+    }
+  </script>
+
+<script>
+  (function(){
+    const container2 = document.querySelector('.grid-container2');
+    if (!container2) return console.warn('grid-container2 not found');
+
+    // Determine columns from CSS (responsive). Fallback to 12/12 layout.
+    const cols = window.matchMedia('(max-width: 600px)').matches ? 6 : 12;
+    const rows = 12;
+    const totalCells2 = cols * rows;
+
+    // Clear any existing cell2 children (avoid duplicates on hot-reload)
+    container2.innerHTML = '';
+
+    // place a dot into every cell2
+    for (let i = 0; i < totalCells2; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.classList.add('cell2', 'empty2');
+
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      // mark with data-index to help debugging or per-dot control later
+      dot.setAttribute('data-index', i);
+      emptyCell.appendChild(dot);
+
+      container2.appendChild(emptyCell);
+    }
+
+    // debug: log result
+    const placed = container2.querySelectorAll('.dot').length;
+    console.log('grid-container2 cells:', totalCells2, 'dot placed:', placed);
+
+    // Draw circles at the corners (4-way intersections) using the SVG overlay
+    const svg = document.querySelector('.grid-overlay');
+    function drawIntersections() {
+      if (!svg) return;
+      // clear previous
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+      // bounding rects to compute positions
+      const gridRect = container2.getBoundingClientRect();
+      const svgRect = svg.getBoundingClientRect();
+
+      const cellW = gridRect.width / cols;
+      const cellH = gridRect.height / rows;
+
+      // place circles at internal intersections (where 4 cells meet)
+      // that is rows-1 by cols-1 points (skip outer border if desired)
+      const radius = 5; // mini size in pixels
+      for (let r = 1; r < rows; r++) {
+        for (let c = 1; c < cols; c++) {
+          const cx = gridRect.left + c * cellW - svgRect.left;
+          const cy = gridRect.top + r * cellH - svgRect.top;
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('cx', String(cx));
+          circle.setAttribute('cy', String(cy));
+          circle.setAttribute('r', String(radius));
+          circle.setAttribute('fill', '#ffffff');
+          circle.setAttribute('opacity', '1');
+          circle.setAttribute('class', 'intersection-dot');
+          svg.appendChild(circle);
+        }
+      }
+    }
+
+    // initial draw and on resize (debounced)
+    drawIntersections();
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(drawIntersections, 120);
+    });
+  })();
+</script>
+
+
+
+</body>
+</html>
