@@ -325,7 +325,7 @@ z-index: 1;
 .model  {
   grid-column: 1 / 6;  /* sloupce  */
   grid-row: 7 / 12; 
-  scale: 1.25;
+  scale: 1.20;
    transition: transform 0.5s ease, opacity 0.3s ease;
    padding: 0px;
 
@@ -337,7 +337,7 @@ z-index: 1;
 .model2  {
   grid-column: 8 / 13;  /* sloupce  */
   grid-row: 7 / 12; 
-  scale: 1.25;
+  scale: 1.20;
   transition: transform 0.5s ease, opacity 0.3s ease;
 
 }
@@ -433,7 +433,7 @@ html.page-hidden, body.page-hidden {
   }
 
 .text3 {
-  grid-column: 2 / 7;  /* sloupce  */
+  grid-column: 2 / 6;  /* sloupce  */
   grid-row: 8 / 9;     /* řádky  */
   color: rgb(0, 255, 13);
   
@@ -449,13 +449,13 @@ html.page-hidden, body.page-hidden {
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 100; 
 }
-.text3:hover {
+.text3:hover:hover {
    transform: scale(1.05);
     
   }
 
 .text4 {
-  grid-column: 7 / 11;  /* sloupce  */
+  grid-column: 8 / 11;  /* sloupce  */
   grid-row: 9 / 10;     /* řádky  */
   color: rgb(0, 255, 13);
   
