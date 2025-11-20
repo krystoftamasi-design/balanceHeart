@@ -24,8 +24,7 @@
     <div class="item_sipka_dole2-cell"></div>
     <div class="item_sipka_dole3-cell"></div>
     <div class="item_sipka_dole4-cell"></div>
-    <div class="item_sipka_dole5-cell"></div>
-    <div class="item_sipka_dole6-cell"></div>
+    
 
 
    <div class="text1">HeartBalance spojuje pohyb a zodpovědnost. Naše podložky vznikají v chráněné dílně na Valašsku a dávají práci lidem s handicapem.</div>
@@ -37,51 +36,65 @@
     
     
     <div class="JSME">JSME</div>
-    <div class="text8">Vyrábíme cvičební podložky, které pomáhají lidem nacházet rovnováhu v pohybu, v mysli i v životě.Každý kus vzniká v chráněné dílně na Valašsku, kde dáváme práci lidem s fyzickým a psychickým handicapem.Naše produkty nejsou jen o výkonu, ale i o respektu, lidskosti a poctivé české výrobě.Proto věříme, že když se staráme o rovnováhu těla, pomáháme vytvářet i vyrovnanější společnost.
+    <div class="text8">Vyrábíme cvičební podložky, které pomáhají lidem nacházet rovnováhu v pohybu, <br>v mysli i v životě.Každý kus vzniká v chráněné dílně na Valašsku, kde dáváme práci lidem s fyzickým <br>a psychickým handicapem.Naše produkty nejsou jen o výkonu, ale i o respektu, lidskosti a poctivé české výrobě.Proto věříme, že když se staráme <br>o rovnováhu těla, pomáháme vytvářet <br>i vyrovnanější společnost.
 </div>
 
     <div class="Obr"></div>
 
     
    
-   
-    <model-viewer
-    src="Imiges/Podlozka.glb"
-    alt="3D model"
-    id="viewer1"
-    class="model"
-    
-    camera-orbit="0deg 90deg 90deg"
-    exposure="1"
-    
-    shadow-intensity="5"
-    environment-rotation="0deg 120deg 0deg"
-    disable-zoom
-    rotation-per-second="30deg"
-    
+ <!--- Click script--->  
+<model-viewer 
+  src="Imiges/Podlozka.glb"
+  alt="3D model"
+  id="viewer1"
+  class="model"
+  camera-orbit="0deg 90deg 90deg"
+  exposure="0.5"
+  shadow-intensity="5"
+  environment-rotation="0deg 120deg 0deg"
 
-      >
-    </model-viewer>
+  disable-zoom
+  rotation-per-second="30deg">
+</model-viewer>
 
-      <model-viewer
-      src="Imiges/Podlozka.glb"
-      alt="3D model"
-      id="viewer2"
-      class="model2"
-      
-      camera-orbit="0deg 90deg 90deg"
-      exposure="1"
+<script>
+  const viewer1 = document.querySelector('#viewer1');
+  viewer1.addEventListener('click', () => {
+    window.location.href = 'detail.html';
+  });
+</script>
+
+
+<model-viewer
+  src="Imiges/Podlozka.glb"
+  alt="3D model"
+  id="viewer2"
+  class="model2"
+  camera-orbit="0deg 90deg 90deg"
+  exposure="0.5
+  "
+  shadow-intensity="5"
+  environment-rotation="0deg 120deg 0deg"
+  disable-zoom>
+  
+</model-viewer>
+
+<!--- Click script--->
+<script>
+  const viewer2 = document.querySelector('#viewer2');
+  viewer2.addEventListener('click', () => {
+    window.location.href = 'detail.html';
+  });
+</script>
     
-      shadow-intensity="5"
-      environment-rotation="0deg 120deg 0deg"
-      disable-zoom
-      
-      >
-      </model-viewer>
+  
+</div>      
 
-    </div>      
-
-  <div class="grid-container2"></div>
+  
+  
+  
+    <div class="grid-container2"></div>
 
       <svg class="grid-overlay" width="100%" height="100%">
       <!-- body se budou generovat JS -->
@@ -89,8 +102,8 @@
 </div>
   
   <script>
-const viewer1 = document.querySelector('#viewer1');
-const viewer2 = document.querySelector('#viewer2');
+const viewer3 = document.querySelector('#viewer1');
+const viewer4 = document.querySelector('#viewer2');
 
 viewer1.autoRotate = false;
 viewer2.autoRotate = false;
@@ -111,7 +124,7 @@ window.addEventListener('scroll', () => {
   <script>
     const container = document.querySelector('.grid-container');
 
-    const totalCells = 50; // celkový počet buněk 
+    const totalCells = 27; // celkový počet buněk 
     const existingCells = container.querySelectorAll('.cell').length;
 
     const emptyCellsToAdd = totalCells - existingCells;
@@ -130,7 +143,7 @@ window.addEventListener('scroll', () => {
 
     // Determine columns from CSS (responsive). Fallback to 12/12 layout.
     const cols = window.matchMedia('(max-width: 600px)').matches ? 6 : 12;
-    const rows = 19;
+    const rows = 18;
     const totalCells2 = cols * rows;
 
     // Clear any existing cell2 children (avoid duplicates on hot-reload)

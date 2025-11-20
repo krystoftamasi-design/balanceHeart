@@ -9,7 +9,7 @@ html, body {
   
   background-size: cover;       /* obrázek vyplní celou plochu */
   background-repeat: no-repeat;
-  background-color:rgb(255, 255, 255);
+  background-color:rgb(0, 0, 0);
 
   /* Skrytí scrollbaru */
   
@@ -208,8 +208,8 @@ z-index: 1;
   }
 
 .item_hvezda-cell2 {
-  grid-column: 7 /8;  /* sloupce  */
-  grid-row: 16 / 17;     /* řádky  */
+  grid-column: 7 / 8;  /* sloupce  */
+  grid-row: 14 / 15;     /* řádky  */
   
   background-image: url('Imiges/hvezdicka-01.svg');
   padding: 0px;
@@ -219,7 +219,7 @@ z-index: 1;
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 5; 
 }
-  .item_hvezda-cell:hover {
+  .item_hvezda-cell2:hover {
     transform: scale(1.1);
     transition-delay: 0.15s;
   }
@@ -256,9 +256,14 @@ z-index: 1;
   padding: 0px;
   background-repeat: no-repeat;
   background-position: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, rotation 0.5s ease;
   z-index: 3; 
 }
+.item_sipka_dole3-cell:hover {
+    transform: scale(1.1);
+    transition-delay: 0.1s;
+    transform: rotate(+180deg);
+  }
 
 .item_sipka_dole4-cell {
   grid-column: 7 / 8;  /* sloupce  */
@@ -268,9 +273,14 @@ z-index: 1;
   padding: 0px;
   background-repeat: no-repeat;
   background-position: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, rotation 0.3s ease;
   z-index: 3; 
 }
+.item_sipka_dole4-cell:hover {
+    transform: scale(1.1);
+    transition-delay: 0.1s;
+    
+  }
 
 .item_sipka_dole5-cell {
   grid-column: 6 / 7;  /* sloupce  */
@@ -283,6 +293,10 @@ z-index: 1;
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 3; 
 }
+.item_sipka_dole5-cell:hover {
+    transform: scale(1.1);
+    transition-delay: 0.1s;
+  }
 
 .item_sipka_dole6-cell {
   grid-column: 2 / 3;  /* sloupce  */
@@ -295,6 +309,10 @@ z-index: 1;
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 3; 
 }
+.item_sipka_dole6-cell:hover {
+    transform: scale(1.1);
+    transition-delay: 0.1s;
+  }
 
  
 
@@ -305,25 +323,26 @@ z-index: 1;
 /* MODEL MODEL MODEL MODEL */
 
 .model  {
-  grid-column: 2 / 6;  /* sloupce  */
-  grid-row: 7 / 11; 
-  scale: 1.4;
+  grid-column: 1 / 6;  /* sloupce  */
+  grid-row: 7 / 12; 
+  scale: 1.25;
    transition: transform 0.5s ease, opacity 0.3s ease;
+   padding: 0px;
 
 }
 .model:hover  {
-  transform: scale(1.05);
+  transform: scale(1.04);
 
 }
 .model2  {
-  grid-column: 8 / 12;  /* sloupce  */
-  grid-row: 7 / 11; 
-  scale: 1.4;
+  grid-column: 8 / 13;  /* sloupce  */
+  grid-row: 7 / 12; 
+  scale: 1.25;
   transition: transform 0.5s ease, opacity 0.3s ease;
 
 }
 .model2:hover  {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 model-viewer {
   width: 100%;
@@ -414,8 +433,8 @@ html.page-hidden, body.page-hidden {
   }
 
 .text3 {
-  grid-column: 1 / 6;  /* sloupce  */
-  grid-row: 10 / 11;     /* řádky  */
+  grid-column: 2 / 7;  /* sloupce  */
+  grid-row: 8 / 9;     /* řádky  */
   color: rgb(0, 255, 13);
   
   font-size: 4vw;
@@ -425,15 +444,15 @@ html.page-hidden, body.page-hidden {
   display: flex;
   ; /* vodorovně */
   align-items: center ;     /* svisle */
-  text-align: left; 
+  text-align: center; 
   
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 100; 
 }
 
 .text4 {
-  grid-column: 9 / 13;  /* sloupce  */
-  grid-row: 10 / 11;     /* řádky  */
+  grid-column: 7 / 11;  /* sloupce  */
+  grid-row: 9 / 10;     /* řádky  */
   color: rgb(0, 255, 13);
   
   
@@ -443,7 +462,7 @@ html.page-hidden, body.page-hidden {
     display: flex;
   justify-content: flex-end; /* zarovnání doprava */
   align-items: center;  
-    text-align: right;  
+    text-align: center;  
     align-items: center ;
   
   
@@ -517,7 +536,7 @@ display: flex;
   
   
   grid-column: 8 / 12;  /* sloupce  */
-  grid-row: 14 / 16;     /* řádky  */
+  grid-row: 12 / 14;     /* řádky  */
   color: rgb(255, 255, 255);
   
   font-size: 13.5vw;
@@ -535,20 +554,21 @@ display: flex;
 }
 
 .text8 {
-  /* O NÁS  */
   
   grid-column: 8 / 12;  /* sloupce  */
-  grid-row: 16 / 18;     /* řádky  */
+  grid-row: 14 / 16;     /* řádky  */
   color: rgb(21, 255, 0);
   
   font-size: 1.44vw;
   line-height: 1.1;
-  scale: 1;
+  
     
   
 display: flex;
   justify-content: center; /* vodorovně */
   align-items: center;     /* svisle */
+  
+  
   
   
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -557,7 +577,7 @@ display: flex;
 
 .Obr    {
   grid-column: 1 / 8;  /* sloupce  */
-  grid-row: 12 / 20;     /* řádky  */
+  grid-row: 11 / 19;     /* řádky  */
   
   background-image: url('Imiges/pohyb.svg');
   padding: 0px;
