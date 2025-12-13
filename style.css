@@ -1,3 +1,11 @@
+:root {
+  --hlavni-barva: #ffffff; /* Hlavní modrá barva */
+  --sekundarni-barva: #ffffff; /* Šedá barva pro doplňky */
+  --barva-pozadi: #ff0000; /* Světlé pozadí */
+  --intersection-dot-color: #0066ff; /* barva teček na průsečících gridu */
+}
+
+
 
 html, body {
   height: 100%;
@@ -9,7 +17,7 @@ html, body {
   
   background-size: cover;       /* obrázek vyplní celou plochu */
   background-repeat: no-repeat;
-  background-color:rgb(0, 0, 0);
+  background-color: var(--barva-pozadi)
 
   /* Skrytí scrollbaru */
   
@@ -25,7 +33,7 @@ body::-webkit-scrollbar {
 .grid-wrapper {
   position: relative; /* referenční bod pro overlay */
   width: 100%;
-  background-color: rgb(0, 0, 0);
+  background-color: var(--barva-pozadi)
   
   
 }
@@ -34,10 +42,11 @@ body::-webkit-scrollbar {
   grid-template-columns: repeat(12, 1fr); /*  sloupce */
   grid-template-rows: repeat(12, 1fr);
   gap: 1px; /* mezery mezi buňkami */
-  outline: 1px solid #0dff04;
+  
  
   background-image: url('Imiges/grid.svg');
   z-index: 100;
+  
   
   
 }
@@ -66,10 +75,7 @@ body::-webkit-scrollbar {
 }
 
 /* Prázdné buňky */
-.cell.empty { 
-  background-color: #5c10c600; 
-  outline: 1px solid #09ff0000;
-}
+
 
 .grid-container2 {
    position: absolute;
@@ -97,7 +103,7 @@ body::-webkit-scrollbar {
 }
 
 .cell2 {
-  background-color: rgb(0, 137, 250);
+  
   min-width: 0;
   min-height: 0;
   aspect-ratio: 1 / 0.965;/* rozměry buňky */
@@ -109,7 +115,7 @@ body::-webkit-scrollbar {
 }
 
 .cell2.empty2 { background-color: #00ff7b00; 
-outline: 0.001mm solid #ffffff36;
+outline: 0.001px solid #00000049;
 z-index: 1;
 
 
@@ -123,20 +129,16 @@ z-index: 1;
   height: 8px;
   background: var(--intersection-dot-color);
   border-radius: 50%;
-  box-shadow: 0 0 0 1px #00000033;
+  box-shadow: 0 0 0 1px #ff000033;
 }
 
-/* SVG intersection dot color and appearance. Change the --intersection-dot-color variable to recolor */
-:root {
-  --intersection-dot-color: #ffffffca; /* default white */
-  
- 
-}
+
 
 .grid-overlay .intersection-dot {
-  fill: var(--intersection-dot-color);
+  color:  var(--intersection-dot-color);
   opacity: 1;
   transition: fill 160ms ease, opacity 160ms ease;
+  
   
   
   
@@ -158,20 +160,16 @@ z-index: 1;
 
 
 /* Obrázek přes buňky 14 až 26 */
-.logo-cell {
+.logo-cell-container {
   grid-column: 1 / 13;  /* sloupce */
   grid-row: 1 / 6;     /* řádky */
-  
-  background-image: url('Imiges/LOGO.svg');
   padding: 0px;
-  
-  transform: scale(0.98);
-  background-position: center ;
- 
-  background-repeat: no-repeat;
-  
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 5;
+  display: flex;
+  justify-content: center; /* Vodorovné centrování */
+  align-items: center;
+  z-index: 3;
+  transition: transform 0.3s ease;
+  scale: 1.11;
   
 }
 /* pro telefon */
@@ -190,132 +188,130 @@ z-index: 1;
 
 
 
-.item_hvezda-cell {
+/* HVĚZDA HVĚZDA HVĚZDA */
+
+.item_hvezda-container-1 {
   grid-column: 12 /13;  /* sloupce  */
   grid-row: 6 / 7;     /* řádky  */
-  
-  background-image: url('Imiges/hvezdicka-01.svg');
   padding: 0px;
-  background-repeat: no-repeat;
-  scale: 1.;
-  background-position: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 5; 
+  display: flex;
+  justify-content: center; /* Vodorovné centrování */
+  align-items: center;
+  z-index: 3;
+  transition: transform 0.3s ease;
 }
-  .item_hvezda-cell:hover {
-    transform: scale(1.1);
+  .item_hvezda-container-1:hover {
+    transform: scale(1.15);
     transition-delay: 0.15s;
   }
 
-.item_hvezda-cell2 {
+.item_hvezda-container-2 {
   grid-column: 7 / 8;  /* sloupce  */
   grid-row: 14 / 15;     /* řádky  */
-  
-  background-image: url('Imiges/hvezdicka-01.svg');
   padding: 0px;
-  background-repeat: no-repeat;
-  scale: 1.;
-  background-position: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 5; 
+  display: flex;
+  justify-content: center; /* Vodorovné centrování */
+  align-items: center;
+  z-index: 3;
+  transition: transform 0.3s ease;
 }
-  .item_hvezda-cell2:hover {
-    transform: scale(1.1);
+  .item_hvezda-container-2:hover {
+    transform: scale(1.15);
     transition-delay: 0.15s;
   }
-
-
-
-
 
 
 /* SIPKA SIPKA SIPKA */
 
-.item_sipka_dole2-cell {
+.item_sipka_dole_container-1 {
   grid-column: 1 / 2;  /* sloupce  */
   grid-row: 6 / 7;     /* řádky  */
-  
-  background-image: url('Imiges/sipka.svg');
   padding: 0px;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 3; 
+  display: flex;
+  justify-content: center; /* Vodorovné centrování */
+  align-items: center;
+  z-index: 3;
+  transition: transform 0.3s ease;
 }
 
-  .item_sipka_dole2-cell:hover {
-    transform: scale(1.1);
+.item_sipka_dole_container-1:hover {
+    transform: scale(1.15);
     transition-delay: 0.1s;
-  }
+}
 
-.item_sipka_dole3-cell {
+.item_sipka_dole_container-2 {
   grid-column: 6 / 7;  /* sloupce  */
   grid-row: 8 / 9;     /* řádky  */
   transform: rotate(90deg);
-  background-image: url('Imiges/sipka.svg');
   padding: 0px;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center; /* Vodorovné centrování */
+  align-items: center;
+  z-index: 3;
+  transition: transform 0.3s ease;
+}
+
+.item_sipka_dole_container-2:hover {
+    transform: rotate(180deg) scale(1.15);
+    transition-delay: 0.1s;
+}
+
+.item_sipka_dole_container-3 {
+  grid-column: 7 / 8;  /* sloupce  */
+  grid-row: 9 / 10;     /* řádky  */
+  transform: rotate(-90deg);
+  padding: 0px;
+  display: flex;
+  justify-content: center; /* Vodorovné centrování */
+  align-items: center;
+  z-index: 3;
+  transition: transform 0.3s ease;
+}
+
+.item_sipka_dole_container-3:hover {
+    transform: scale(1.1);
+    transition-delay: 0.1s;
+}
+
+/*  barva item */
+
+.icon {
+    width: 90%;
+    height: 90%;
+     background-repeat: no-repeat;
   background-position: center;
   transition: transform 0.3s ease, opacity 0.3s ease, rotation 0.5s ease;
   z-index: 3; 
 }
-.item_sipka_dole3-cell:hover {
-    transform: scale(1.1);
-    transition-delay: 0.1s;
-    transform: rotate(+180deg);
-  }
 
-.item_sipka_dole4-cell {
-  grid-column: 7 / 8;  /* sloupce  */
-  grid-row: 9 / 10;     /* řádky  */
-  transform: rotate(-90deg);
-  background-image: url('Imiges/sipka.svg');
-  padding: 0px;
-  background-repeat: no-repeat;
+.icon path {
+    fill: var(--hlavni-barva);
+    transition: fill 0.3s ease; /* Zajišťuje plynulý přechod barvy */
+}
+
+.icon  rect {
+    fill: var(--hlavni-barva);
+    transition: fill 0.3s ease; /* Zajišťuje plynulý přechod barvy */
+}
+
+.logo {
+    width: 90%;
+    height: 90%;
+     background-repeat: no-repeat;
   background-position: center;
-  transition: transform 0.3s ease, opacity 0.3s ease, rotation 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, rotation 0.5s ease;
   z-index: 3; 
 }
-.item_sipka_dole4-cell:hover {
-    transform: scale(1.1);
-    transition-delay: 0.1s;
-    
-  }
 
-.item_sipka_dole5-cell {
-  grid-column: 6 / 7;  /* sloupce  */
-  grid-row: 12 / 13;     /* řádky  */
-  
-  background-image: url('Imiges/sipka.svg');
-  padding: 0px;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 3; 
+.logo path {
+    fill: var(--sekundarni-barva);
+    transition: fill 0.3s ease; /* Zajišťuje plynulý přechod barvy */
 }
-.item_sipka_dole5-cell:hover {
-    transform: scale(1.1);
-    transition-delay: 0.1s;
-  }
 
-.item_sipka_dole6-cell {
-  grid-column: 2 / 3;  /* sloupce  */
-  grid-row: 12 / 13;     /* řádky  */
-  
-  background-image: url('Imiges/sipka.svg');
-  padding: 0px;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 3; 
+.logo rect {
+    fill: var(--sekundarni-barva);
+    transition: fill 0.3s ease; /* Zajišťuje plynulý přechod barvy */
 }
-.item_sipka_dole6-cell:hover {
-    transform: scale(1.1);
-    transition-delay: 0.1s;
-  }
-
- 
-
 
 
 
@@ -358,7 +354,7 @@ model-viewer {
 .text1 {
   grid-column: 9 / 12;  /* sloupce  */
   grid-row: 6 / 7;     /* řádky  */
-  color: rgb(38, 255, 0);
+  color:var(--sekundarni-barva);
  
   font-size: 1.44vw;
   line-height: 1.1;
@@ -413,7 +409,7 @@ html.page-hidden, body.page-hidden {
 .text2 {
   grid-column: 2 / 3;  /* sloupce  */
   grid-row: 6 / 7;     /* řádky  */
-  color: rgb(0, 255, 13);
+  color:var(--sekundarni-barva);
   
   font-size: 1.44vw;
   line-height: 1.1;
@@ -435,7 +431,7 @@ html.page-hidden, body.page-hidden {
 .text3 {
   grid-column: 2 / 6;  /* sloupce  */
   grid-row: 8 / 9;     /* řádky  */
-  color: rgb(0, 255, 13);
+  color:var(--sekundarni-barva);
   
   font-size: 4vw;
   line-height: 1.1;
@@ -457,7 +453,7 @@ html.page-hidden, body.page-hidden {
 .text4 {
   grid-column: 8 / 11;  /* sloupce  */
   grid-row: 9 / 10;     /* řádky  */
-  color: rgb(0, 255, 13);
+  color:var(--sekundarni-barva);
   
   
   font-size: 4vw;
@@ -482,7 +478,7 @@ html.page-hidden, body.page-hidden {
 .text5 {
   grid-column: 6 / 8;  /* sloupce  */
   grid-row: 7 / 8;     /* řádky  */
-  color: rgb(255, 255, 255);
+  color:var(--sekundarni-barva);
   
   font-size: 1.44vw;
   line-height: 1.1;
@@ -501,7 +497,7 @@ html.page-hidden, body.page-hidden {
 .text6 {
   grid-column: 6 / 8;  /* sloupce  */
   grid-row: 10 / 11;     /* řádky  */
-  color: rgb(255, 255, 255);
+  color:var(--sekundarni-barva);
   
   font-size: 1.44vw;
   line-height: 1.1;
@@ -522,7 +518,7 @@ html.page-hidden, body.page-hidden {
   
   grid-column: 5 / 6;  /* sloupce  */
   grid-row: 12 / 13;     /* řádky  */
-  color: rgb(255, 255, 255);
+  color:var(--sekundarni-barva);
   
   font-size: 1.44vw;
   line-height: 1.1;
@@ -545,7 +541,7 @@ display: flex;
   
   grid-column: 8 / 12;  /* sloupce  */
   grid-row: 12 / 14;     /* řádky  */
-  color: rgb(255, 255, 255);
+  color:var(--sekundarni-barva);
   
   font-size: 13.5vw;
   line-height: 1.1;
@@ -565,7 +561,7 @@ display: flex;
   
   grid-column: 8 / 12;  /* sloupce  */
   grid-row: 14 / 16;     /* řádky  */
-  color: rgb(21, 255, 0);
+  color: var(--sekundarni-barva);
   
   font-size: 1.44vw;
   line-height: 1.1;
@@ -587,7 +583,7 @@ display: flex;
   grid-column: 1 / 8;  /* sloupce  */
   grid-row: 11 / 19;     /* řádky  */
   
-  background-image: url('Imiges/pohyb.svg');
+  background-image: url('Imiges/pohyb2.svg');
   padding: 0px;
   background-repeat: no-repeat;
   background-position: center;
